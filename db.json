@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "title": "Popular<br /> (From 'Wicked')",
+      "singer": "Ariana Grande",
+      "albumCover": "./imgs/wicked.jpg",
+      "audio": "./musics/Popular (From 'Wicked').mp3"
+    },
+    {
+      "title": "Steal The Show<br /> (From 'Elemental')",
+      "singer": "Lauv",
+      "albumCover": "./imgs/wicked.jpg",
+      "audio": "./musics/Lauv - Steal The Show (From 'Elemental').mp3"
+    },
+    {
+      "title": "Lost Stars<br /> (From 'Begin Again')",
+      "singer": "Maroon 5",
+      "albumCover": "./imgs/wicked.jpg",
+      "audio": "./musics/Lost Stars.mp3"
+    },
+    {
+      "title": "The Other Side<br /> (From 'The Greatest Showman')",
+      "singer": "Hugh Jackman, Zac Efron",
+      "albumCover": "./imgs/wicked.jpg",
+      "audio": "./musics/The Greatest Showman Cast - The Other Side.mp3"
+    },
+    {
+      "title": "You're Welcome<br /> (From 'Moana')",
+      "singer": "Dwayne Johnson",
+      "albumCover": "./imgs/wicked.jpg",
+      "audio": "./musics/You're Welcome (From 'Moana').mp3"
+    },
+    {
+      "title": "Sunflower<br /> (From 'Spider-Man: Across The Spider-Verse')",
+      "singer": "Post Malone, Swae Lee",
+      "albumCover": "./imgs/wicked.jpg",
+      "audio": "./musics/Post Malone, Swae Lee - Sunflower (Spider-Man- Into the Spider-Verse).mp3"
+    },
+    {
+      "title": "A World of Your Own<br /> (From 'Wonka')",
+      "singer": "Timothée Chalamet",
+      "albumCover": "./imgs/wicked.jpg",
+      "audio": "./musics/A World of Your Own - Timothée Chalamet & The Cast of Wonka.mp3"
+    },
+    {
+      "title": "Bohemian Rhapsody<br /> (From 'Bohemian Rhapsody')",
+      "singer": "Queen",
+      "albumCover": "./imgs/wicked.jpg",
+      "audio": "./musics/Bohemian Rhapsody.mp3"
+    }
+  ]
+}

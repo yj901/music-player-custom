@@ -1,2 +1,336 @@
 @import "./styles/reset";
 @import "./styles/variables";
+
+@mixin btnDetail {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: map-get($map: $color, $key: light);
+  position: absolute;
+  left: 0;
+  transition: all 0.5s;
+}
+
+@mixin btnStyle {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+
+figure {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  & > h1 {
+    position: absolute;
+    top: 7vh;
+    left: 4vw;
+    font-size: 0;
+    strong {
+      font: bold 3.6rem/1.4 "arial";
+      color: map-get($map: $color, $key: light);
+    }
+    span {
+      display: block;
+      font: normal 1.2rem/1 "arial";
+      letter-spacing: 1px;
+      color: map-get($map: $color, $key: light);
+      opacity: 0.8;
+      text-align: center;
+    }
+  }
+  .menu {
+    position: absolute;
+    top: 8vh;
+    right: 4vw;
+    color: map-get($map: $color, $key: light);
+    font-size: 2.4rem;
+  }
+  .bot-p {
+    position: absolute;
+    bottom: 7vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: map-get($map: $color, $key: light);
+    letter-spacing: 2px;
+    opacity: 0.8;
+    font: normal 1.2rem/1 "arial";
+  }
+  .player-section {
+    width: 20vw;
+    height: 65vh;
+    position: absolute;
+    top: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: center;
+    transition: transform 1s;
+    .player {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-origin: center;
+      top: 0;
+      left: 0;
+      &.on {
+        .inner {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+      .inner {
+        width: 100%;
+        height: 100%;
+        background: map-get($map: $color, $key: inner);
+        padding: 5vh 2.5vw 8vh;
+        display: flex;
+        justify-content: center;
+        align-content: space-between;
+        flex-wrap: wrap;
+        border-radius: 10px;
+        box-shadow: 10px 10px 20px rgba(#000, 0.07);
+        opacity: 0.6;
+        transform: scale(0.8);
+        transition: opacity 1s, transform 1s;
+        .pic {
+          width: 15vw;
+          height: 15vw;
+          border-radius: 50%;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          &::before,
+          &::after {
+            content: "";
+            width: inherit;
+            height: inherit;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: inherit;
+            background-position: inherit;
+            background-size: inherit;
+            background-repeat: inherit;
+          }
+          &::before {
+            content: "";
+            transform: translateY(5%);
+            filter: blur(20px) brightness(1.8);
+          }
+          &.on::after {
+            animation: ani 4s linear infinite;
+          }
+          &.on::before {
+            animation: ani2 4s linear infinite;
+          }
+          .dot {
+            width: 3vw;
+            height: 3vw;
+            border-radius: 50%;
+            background: map-get($map: $color, $key: dot);
+            position: relative;
+            z-index: 3;
+            box-shadow: inset 5px 5px 10px rgba(#000, 0.3);
+          }
+        }
+        .txt {
+          text-align: center;
+          width: 100%;
+          h2 {
+            font-size: 2rem;
+            color: map-get($map: $color, $key: title);
+          }
+          p {
+            font-size: 1.2rem;
+            margin: 2vh 0 3vh;
+            color: map-get($map: $color, $key: desc);
+          }
+          ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            li {
+              opacity: 0.6;
+              cursor: pointer;
+              transition: all 0.5s;
+              &.play {
+                transform: scale(1.5);
+                opacity: 0.9;
+                &:hover {
+                  opacity: 1;
+                  transform: scale(2);
+                }
+              }
+              &:hover {
+                opacity: 1;
+                transform: scale(1.5);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .btnPrev {
+    @include btnStyle();
+    text-align: left;
+    left: 50%;
+    transform: translate(-20vw, -50%);
+    &:hover {
+      span {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      &::before {
+        transform: rotate(-30deg);
+      }
+      &::after {
+        transform: rotate(30deg);
+      }
+    }
+    span {
+      color: map-get($map: $color, $key: light);
+      font: normal 1.2rem/1 "arial";
+      opacity: 1;
+      transition: all 0.5s;
+      transform: translateX(30%);
+    }
+    &::before {
+      @include btnDetail();
+      top: 50%;
+      transform: rotate(-180deg);
+      transform-origin: left center;
+    }
+    &::after {
+      @include btnDetail();
+      bottom: 50%;
+      transform: rotate(180deg);
+      transform-origin: left center;
+    }
+  }
+  .btnNext {
+    @include btnStyle();
+    text-align: right;
+    right: 50%;
+    transform: translate(20vw, -50%);
+    &:hover {
+      span {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+      &::before {
+        transform: rotate(30deg);
+      }
+      &::after {
+        transform: rotate(-30deg);
+      }
+    }
+    span {
+      color: map-get($map: $color, $key: light);
+      font: normal 1.2rem/1 "arial";
+      opacity: 1;
+      transition: all 0.5s;
+      transform: translateX(-30%);
+    }
+    &::before {
+      @include btnDetail();
+      top: 50%;
+      transform: rotate(180deg);
+      transform-origin: right center;
+    }
+    &::after {
+      @include btnDetail();
+      bottom: 50%;
+      transform: rotate(-180deg);
+      transform-origin: right center;
+    }
+  }
+}
+
+@keyframes ani {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ani2 {
+  0% {
+    transform: translateY(10%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(10%) rotate(360deg);
+  }
+}
+
+/*로딩 스피너*/
+
+.loading {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    animation: loading 1.5s linear infinite;
+    &:nth-child(1) {
+      background: crimson;
+    }
+    &:nth-child(2) {
+      background: dodgerblue;
+      animation-delay: 0.8s;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 0;
+    left: calc(100% - 10px);
+  }
+  50% {
+    top: calc(100% - 10px);
+    left: calc(100% - 10px);
+  }
+  75% {
+    top: calc(100% - 10px);
+    left: 0;
+  }
+  100% {
+    top: 0;
+    left: 0;
+  }
+}
