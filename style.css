@@ -28,7 +28,7 @@ figure {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  background: #f2f2f2;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -38,17 +38,18 @@ figure > h1 {
   top: 7vh;
   left: 4vw;
   font-size: 0;
+  background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 figure > h1 strong {
   font: bold 3.6rem/1.4 "arial";
-  color: #fff;
 }
 figure > h1 span {
   display: block;
   font: normal 1.2rem/1 "arial";
   letter-spacing: 1px;
-  color: #fff;
-  opacity: 0.8;
   text-align: center;
 }
 figure .menu {
@@ -63,14 +64,17 @@ figure .bot-p {
   bottom: 7vh;
   left: 50%;
   transform: translateX(-50%);
-  color: #fff;
   letter-spacing: 2px;
   opacity: 0.8;
   font: normal 1.2rem/1 "arial";
+  background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 figure .player-section {
   width: 20vw;
-  height: 65vh;
+  height: 43vh;
   position: absolute;
   top: 115%;
   left: 50%;
@@ -93,23 +97,26 @@ figure .player-section .player.on .inner {
 figure .player-section .player .inner {
   width: 100%;
   height: 100%;
-  background: #f0f7ff;
+  position: relative;
+  background: #fff;
   padding: 5vh 2.5vw 8vh;
   display: flex;
   justify-content: center;
-  align-content: space-between;
+  align-content: flex-end;
   flex-wrap: wrap;
   border-radius: 10px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.07);
+  box-shadow: 10px 10px 20px rgba(154, 154, 225, 0.05);
   opacity: 0.6;
   transform: scale(0.8);
   transition: opacity 1s, transform 1s;
 }
 figure .player-section .player .inner .pic {
-  width: 15vw;
-  height: 15vw;
-  border-radius: 50%;
-  position: relative;
+  width: 13vw;
+  height: 13vw;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,38 +124,11 @@ figure .player-section .player .inner .pic {
   background-position: center;
   background-size: cover;
 }
-figure .player-section .player .inner .pic::before, figure .player-section .player .inner .pic::after {
-  content: "";
-  width: inherit;
-  height: inherit;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: inherit;
-  background-position: inherit;
-  background-size: inherit;
-  background-repeat: inherit;
+figure .player-section .player .inner .pic svg {
+  filter: drop-shadow(0px 0px 20px rgba(154, 154, 225, 0.3));
 }
-figure .player-section .player .inner .pic::before {
-  content: "";
-  transform: translateY(5%);
-  filter: blur(20px) brightness(1.8);
-}
-figure .player-section .player .inner .pic.on::after {
+figure .player-section .player .inner .pic.on svg {
   animation: ani 4s linear infinite;
-}
-figure .player-section .player .inner .pic.on::before {
-  animation: ani2 4s linear infinite;
-}
-figure .player-section .player .inner .pic .dot {
-  width: 3vw;
-  height: 3vw;
-  border-radius: 50%;
-  background: #e4f1ff;
-  position: relative;
-  z-index: 3;
-  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 figure .player-section .player .inner .txt {
   text-align: center;
@@ -161,7 +141,7 @@ figure .player-section .player .inner .txt h2 {
 figure .player-section .player .inner .txt p {
   font-size: 1.2rem;
   margin: 2vh 0 3vh;
-  color: #777;
+  color: #222;
 }
 figure .player-section .player .inner .txt ul {
   display: flex;
@@ -169,6 +149,7 @@ figure .player-section .player .inner .txt ul {
   align-items: center;
 }
 figure .player-section .player .inner .txt ul li {
+  color: #222;
   opacity: 0.6;
   cursor: pointer;
   transition: all 0.5s;
@@ -208,7 +189,7 @@ figure .btnPrev:hover::after {
   transform: rotate(30deg);
 }
 figure .btnPrev span {
-  color: #fff;
+  color: #222;
   font: normal 1.2rem/1 "arial";
   opacity: 1;
   transition: all 0.5s;
@@ -218,7 +199,7 @@ figure .btnPrev::before {
   content: "";
   width: 100%;
   height: 1px;
-  background: #fff;
+  background: #222;
   position: absolute;
   left: 0;
   transition: all 0.5s;
@@ -230,7 +211,7 @@ figure .btnPrev::after {
   content: "";
   width: 100%;
   height: 1px;
-  background: #fff;
+  background: #222;
   position: absolute;
   left: 0;
   transition: all 0.5s;
@@ -261,7 +242,7 @@ figure .btnNext:hover::after {
   transform: rotate(-30deg);
 }
 figure .btnNext span {
-  color: #fff;
+  color: #222;
   font: normal 1.2rem/1 "arial";
   opacity: 1;
   transition: all 0.5s;
@@ -271,7 +252,7 @@ figure .btnNext::before {
   content: "";
   width: 100%;
   height: 1px;
-  background: #fff;
+  background: #222;
   position: absolute;
   left: 0;
   transition: all 0.5s;
@@ -283,7 +264,7 @@ figure .btnNext::after {
   content: "";
   width: 100%;
   height: 1px;
-  background: #fff;
+  background: #222;
   position: absolute;
   left: 0;
   transition: all 0.5s;

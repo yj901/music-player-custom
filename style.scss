@@ -5,7 +5,7 @@
   content: "";
   width: 100%;
   height: 1px;
-  background: map-get($map: $color, $key: light);
+  background: map-get($map: $color, $key: dark);
   position: absolute;
   left: 0;
   transition: all 0.5s;
@@ -33,7 +33,7 @@ figure {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  background: map-get($map: $color, $key: background);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -42,16 +42,27 @@ figure {
     top: 7vh;
     left: 4vw;
     font-size: 0;
+    background: linear-gradient(
+      to right top,
+      #d16ba5,
+      #c777b9,
+      #ba83ca,
+      #aa8fd8,
+      #9a9ae1,
+      #8aa7ec,
+      #79b3f4,
+      #69bff8
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     strong {
       font: bold 3.6rem/1.4 "arial";
-      color: map-get($map: $color, $key: light);
     }
     span {
       display: block;
       font: normal 1.2rem/1 "arial";
       letter-spacing: 1px;
-      color: map-get($map: $color, $key: light);
-      opacity: 0.8;
       text-align: center;
     }
   }
@@ -67,14 +78,27 @@ figure {
     bottom: 7vh;
     left: 50%;
     transform: translateX(-50%);
-    color: map-get($map: $color, $key: light);
     letter-spacing: 2px;
     opacity: 0.8;
     font: normal 1.2rem/1 "arial";
+    background: linear-gradient(
+      to right top,
+      #d16ba5,
+      #c777b9,
+      #ba83ca,
+      #aa8fd8,
+      #9a9ae1,
+      #8aa7ec,
+      #79b3f4,
+      #69bff8
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
   .player-section {
     width: 20vw;
-    height: 65vh;
+    height: 43vh;
     position: absolute;
     top: 115%;
     left: 50%;
@@ -97,80 +121,97 @@ figure {
       .inner {
         width: 100%;
         height: 100%;
-        background: map-get($map: $color, $key: inner);
+        position: relative;
+        background: map-get($map: $color, $key: light);
         padding: 5vh 2.5vw 8vh;
         display: flex;
         justify-content: center;
-        align-content: space-between;
+        align-content: flex-end;
         flex-wrap: wrap;
         border-radius: 10px;
-        box-shadow: 10px 10px 20px rgba(#000, 0.07);
+        box-shadow: 10px 10px 20px rgba(map-get($color, shadow), 0.05);
         opacity: 0.6;
         transform: scale(0.8);
         transition: opacity 1s, transform 1s;
         .pic {
-          width: 15vw;
-          height: 15vw;
-          border-radius: 50%;
-          position: relative;
+          width: 13vw;
+          height: 13vw;
+          // border-radius: 50%;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, -50%);
           display: flex;
           justify-content: center;
           align-items: center;
           background-repeat: no-repeat;
           background-position: center;
           background-size: cover;
-          &::before,
-          &::after {
-            content: "";
-            width: inherit;
-            height: inherit;
-            border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-image: inherit;
-            background-position: inherit;
-            background-size: inherit;
-            background-repeat: inherit;
+          // mask-image: url("./imgs/circle.svg");
+          // mask-size: 100%;
+          // mask-repeat: no-repeat;
+          // mask-position: center;
+          svg {
+            filter: drop-shadow(
+              0px 0px 20px rgba(map-get($color, shadow), 0.3)
+            );
           }
-          &::before {
-            content: "";
-            transform: translateY(5%);
-            filter: blur(20px) brightness(1.8);
+          &.on {
+            svg {
+              animation: ani 4s linear infinite;
+            }
           }
-          &.on::after {
-            animation: ani 4s linear infinite;
-          }
-          &.on::before {
-            animation: ani2 4s linear infinite;
-          }
-          .dot {
-            width: 3vw;
-            height: 3vw;
-            border-radius: 50%;
-            background: map-get($map: $color, $key: dot);
-            position: relative;
-            z-index: 3;
-            box-shadow: inset 5px 5px 10px rgba(#000, 0.3);
-          }
+          // &::before,
+          // &::after {
+          //   content: "";
+          //   width: 100%;
+          //   height: 100%;
+          //   border-radius: 50%;
+          //   position: absolute;
+          //   top: 0;
+          //   left: 0;
+          //   // background-image: url("./imgs/wicked.jpg");
+          //   background-position: inherit;
+          //   background-size: inherit;
+          //   background-repeat: inherit;
+          // }
+          // &::before {
+          //   content: "";
+          //   transform: translateY(5%);
+          //   filter: blur(20px) brightness(1.6);
+          // }
+
+          // &.on::before {
+          //   animation: ani2 4s linear infinite;
+          // }
+          // .dot {
+          //   width: 1vw;
+          //   height: 1vw;
+          //   border-radius: 50%;
+          //   background: transparent;
+          //   position: relative;
+          //   z-index: 3;
+          //   box-shadow: inset 5px 5px 10px rgba(#000, 0.3);
+          // }
         }
         .txt {
           text-align: center;
           width: 100%;
           h2 {
             font-size: 2rem;
-            color: map-get($map: $color, $key: title);
+            color: map-get($map: $color, $key: dark);
           }
           p {
             font-size: 1.2rem;
             margin: 2vh 0 3vh;
-            color: map-get($map: $color, $key: desc);
+            color: map-get($map: $color, $key: dark);
           }
           ul {
             display: flex;
             justify-content: space-around;
             align-items: center;
             li {
+              color: map-get($map: $color, $key: dark);
               opacity: 0.6;
               cursor: pointer;
               transition: all 0.5s;
@@ -210,7 +251,7 @@ figure {
       }
     }
     span {
-      color: map-get($map: $color, $key: light);
+      color: map-get($map: $color, $key: dark);
       font: normal 1.2rem/1 "arial";
       opacity: 1;
       transition: all 0.5s;
@@ -247,7 +288,7 @@ figure {
       }
     }
     span {
-      color: map-get($map: $color, $key: light);
+      color: map-get($map: $color, $key: dark);
       font: normal 1.2rem/1 "arial";
       opacity: 1;
       transition: all 0.5s;

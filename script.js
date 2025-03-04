@@ -14,9 +14,33 @@ fetch(db)
 
       article.innerHTML = `
         <div class="inner">
-          <div class="pic" style="background-image: url('${list.albumCover}')">
-            <div class="dot"></div>
-          </div>
+        <div class="pic">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="100%"
+                height="100%"
+                viewBox="0 0 600 592"
+                fill="none"
+              >
+                <defs>
+                  <mask id="albumcover">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M300 592C465.686 592 600 459.476 600 296C600 132.524 465.686 0 300 0C134.315 0 0 132.524 0 296C0 459.476 134.315 592 300 592ZM300 318C312.15 318 322 308.15 322 296C322 283.85 312.15 274 300 274C287.85 274 278 283.85 278 296C278 308.15 287.85 318 300 318Z"
+                      fill="white"
+                    />
+                  </mask>
+                </defs>
+
+                <image
+                  mask="url(#albumcover)"
+                  xlink:href="${list.albumCover}"
+                  width="100%"
+                />
+              </svg>
+            </div>
+          
           <div class="txt">
             <h2>${list.title}</h2>
             <p>
@@ -63,7 +87,7 @@ fetch(db)
       const pause = player.querySelector(".pause");
       const load = player.querySelector(".load");
 
-      player.style.transform = `rotate(${i * deg}deg) translateY(-150%)`;
+      player.style.transform = `rotate(${i * deg}deg) translateY(-185%)`;
       i++;
 
       play.addEventListener("click", (e) => {
