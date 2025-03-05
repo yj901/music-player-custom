@@ -28,7 +28,7 @@ figure {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background: #f2f2f2;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -56,7 +56,10 @@ figure .menu {
   position: absolute;
   top: 8vh;
   right: 4vw;
-  color: #fff;
+  background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   font-size: 2.4rem;
 }
 figure .bot-p {
@@ -92,20 +95,19 @@ figure .player-section .player {
 }
 figure .player-section .player.on .inner {
   opacity: 1;
-  transform: scale(1.1);
 }
 figure .player-section .player .inner {
   width: 100%;
   height: 100%;
   position: relative;
   background: #fff;
-  padding: 5vh 2.5vw 8vh;
+  padding: 5vh 2.5vw 5vh;
   display: flex;
   justify-content: center;
   align-content: flex-end;
   flex-wrap: wrap;
   border-radius: 10px;
-  box-shadow: 10px 10px 20px rgba(154, 154, 225, 0.05);
+  box-shadow: 10px 10px 20px rgba(186, 200, 224, 0.1);
   opacity: 0.6;
   transform: scale(0.8);
   transition: opacity 1s, transform 1s;
@@ -125,7 +127,7 @@ figure .player-section .player .inner .pic {
   background-size: cover;
 }
 figure .player-section .player .inner .pic svg {
-  filter: drop-shadow(0px 0px 20px rgba(154, 154, 225, 0.3));
+  filter: drop-shadow(0px 0px 10px rgba(186, 200, 224, 0.9));
 }
 figure .player-section .player .inner .pic.on svg {
   animation: ani 4s linear infinite;
@@ -134,35 +136,66 @@ figure .player-section .player .inner .txt {
   text-align: center;
   width: 100%;
 }
-figure .player-section .player .inner .txt h2 {
-  font-size: 2rem;
+figure .player-section .player .inner .txt .tit h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.6vh;
   color: #222;
 }
-figure .player-section .player .inner .txt p {
+figure .player-section .player .inner .txt .tit p {
   font-size: 1.2rem;
-  margin: 2vh 0 3vh;
   color: #222;
 }
-figure .player-section .player .inner .txt ul {
+figure .player-section .player .inner .txt .progressbar {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  margin: 3vh 0;
+  background: rgba(186, 200, 224, 0.5);
+  cursor: pointer;
+}
+figure .player-section .player .inner .txt .progressbar .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: 0;
+  background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8);
+}
+figure .player-section .player .inner .txt .progressbar .progress .cir {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 11px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(to right top, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8);
+  cursor: pointer;
+}
+figure .player-section .player .inner .txt .btns {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-figure .player-section .player .inner .txt ul li {
-  color: #222;
+figure .player-section .player .inner .txt .btns li {
+  background: linear-gradient(to right top, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   opacity: 0.6;
   cursor: pointer;
+  padding: 2px;
   transition: all 0.5s;
 }
-figure .player-section .player .inner .txt ul li.play {
+figure .player-section .player .inner .txt .btns li.play {
   transform: scale(1.5);
   opacity: 0.9;
 }
-figure .player-section .player .inner .txt ul li.play:hover {
+figure .player-section .player .inner .txt .btns li.play:hover {
   opacity: 1;
   transform: scale(2);
 }
-figure .player-section .player .inner .txt ul li:hover {
+figure .player-section .player .inner .txt .btns li:hover {
   opacity: 1;
   transform: scale(1.5);
 }

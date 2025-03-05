@@ -7,5 +7,27 @@ $color: (
   dot: #e4f1ff,
   title: #222,
   desc: #777,
-  shadow: #9a9ae1,
+  shadow: #bac8e0,
+  gradient:
+    linear-gradient(
+      to right top,
+      #d16ba5,
+      #c777b9,
+      #ba83ca,
+      #aa8fd8,
+      #9a9ae1,
+      #8aa7ec,
+      #79b3f4,
+      #69bff8
+    ),
+  gradient2:
+    linear-gradient(
+      to right top,
+      #ba83ca,
+      #aa8fd8,
+      #9a9ae1,
+      #8aa7ec,
+      #79b3f4,
+      #69bff8
+    ),
 );

@@ -1,6 +1,5 @@
 const db = "./db.json";
 const playerSection = document.querySelector(".player-section");
-// const players = playerSection.querySelector("article");
 
 fetch(db)
   .then((res) => res.json())
@@ -42,11 +41,16 @@ fetch(db)
             </div>
           
           <div class="txt">
-            <h2>${list.title}</h2>
-            <p>
-              ${list.singer}
-            </p>
-            <ul>
+            <div class="tit">
+              <h2>${list.title}</h2>
+              <p>${list.singer}</p>
+            </div>
+            <div class="progressbar">
+                <div class="progress">
+                  <div class="cir"></div>
+                </div>
+              </div>
+            <ul class="btns">
               <li class="pause">
                 <i class="fas fa-pause"></i>
               </li>
@@ -82,13 +86,44 @@ fetch(db)
     const next = document.querySelector(".btnNext");
 
     players.forEach((player) => {
-      const pic = player.querySelector(".pic");
       const play = player.querySelector(".play");
       const pause = player.querySelector(".pause");
       const load = player.querySelector(".load");
 
+      const progressbar = player.querySelector(".progressbar");
+      const progress = progressbar.querySelector(".progress");
+      const cir = progress.querySelector(".cir");
+      const audio = player.querySelector("audio");
+
       player.style.transform = `rotate(${i * deg}deg) translateY(-185%)`;
       i++;
+
+      let activeAudio = 0;
+      let audioDuration = 0;
+
+      const updateProgress = () => {
+        audioDuration = activeAudio.duration;
+        const audioCurrent = activeAudio.currentTime;
+        const percent = (audioCurrent / audioDuration) * 100;
+        progress.style.width = `${percent}%`;
+
+        const progressbarWidth = progressbar.clientWidth;
+        const newPosition = (audioCurrent / audioDuration) * progressbarWidth;
+
+        cir.style.left = `${newPosition}px`;
+      };
+
+      const audioPoint = (e) => {
+        const mouseX = e.pageX - progressbar.getBoundingClientRect().x;
+        const progressbarWidth = progressbar.clientWidth;
+        audioDuration = audio.duration;
+        const clickTime = (mouseX / progressbarWidth) * audioDuration;
+        activeAudio.currentTime = clickTime;
+        console.log(mouseX, e.pageX, progressbar.getBoundingClientRect().x);
+      };
+
+      audio.addEventListener("timeupdate", updateProgress);
+      progressbar.addEventListener("click", audioPoint);
 
       play.addEventListener("click", (e) => {
         const isActive = e.currentTarget
@@ -102,9 +137,10 @@ fetch(db)
 
           activePic.classList.add("on");
 
-          const activeAudio = e.currentTarget
+          activeAudio = e.currentTarget
             .closest("article")
             .querySelector("audio");
+
           activeAudio.play();
 
           activeAudio.addEventListener("ended", () => {
@@ -125,9 +161,10 @@ fetch(db)
 
           activePic.classList.remove("on");
 
-          const activeAudio = e.currentTarget
+          activeAudio = e.currentTarget
             .closest("article")
             .querySelector("audio");
+
           activeAudio.pause();
         }
       });
