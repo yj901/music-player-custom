@@ -98,12 +98,12 @@ fetch(db)
       player.style.transform = `rotate(${i * deg}deg) translateY(-185%)`;
       i++;
 
-      let activeAudio = 0;
       let audioDuration = 0;
+      let audioCurrent = audio.currentTime;
 
       const updateProgress = () => {
-        audioDuration = activeAudio.duration;
-        const audioCurrent = activeAudio.currentTime;
+        audioDuration = audio.duration;
+        audioCurrent = audio.currentTime;
         const percent = (audioCurrent / audioDuration) * 100;
         progress.style.width = `${percent}%`;
 
@@ -115,11 +115,10 @@ fetch(db)
 
       const audioPoint = (e) => {
         const mouseX = e.pageX - progressbar.getBoundingClientRect().x;
-        const progressbarWidth = progressbar.clientWidth;
+        const progressbarWidth = progressbar.getBoundingClientRect().width;
         audioDuration = audio.duration;
         const clickTime = (mouseX / progressbarWidth) * audioDuration;
-        activeAudio.currentTime = clickTime;
-        console.log(mouseX, e.pageX, progressbar.getBoundingClientRect().x);
+        audio.currentTime = clickTime;
       };
 
       audio.addEventListener("timeupdate", updateProgress);
@@ -137,7 +136,7 @@ fetch(db)
 
           activePic.classList.add("on");
 
-          activeAudio = e.currentTarget
+          const activeAudio = e.currentTarget
             .closest("article")
             .querySelector("audio");
 
@@ -161,7 +160,7 @@ fetch(db)
 
           activePic.classList.remove("on");
 
-          activeAudio = e.currentTarget
+          const activeAudio = e.currentTarget
             .closest("article")
             .querySelector("audio");
 
