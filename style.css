@@ -95,6 +95,7 @@ figure .player-section .player {
 }
 figure .player-section .player.on .inner {
   opacity: 1;
+  transform: scale(1.1);
 }
 figure .player-section .player .inner {
   width: 100%;
