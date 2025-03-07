@@ -1,0 +1,25 @@
+@import "./variables";
+
+@media screen and (max-width: 1440px) {
+  figure {
+    // & > h1 {}
+    // .menu {}
+    // .bot-p {}
+    .player-section {
+      .player {
+        .inner {
+          .txt {
+            .tit {
+              h2 {
+                font-size: 1.6rem;
+              }
+              p {
+                font-size: 1.2rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

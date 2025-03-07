@@ -18,17 +18,12 @@ fetch(db)
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
                 height="100%"
-                viewBox="0 0 600 592"
+                viewBox="0 0 600 600"
                 fill="none"
               >
                 <defs>
                   <mask id="albumcover">
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M300 592C465.686 592 600 459.476 600 296C600 132.524 465.686 0 300 0C134.315 0 0 132.524 0 296C0 459.476 134.315 592 300 592ZM300 318C312.15 318 322 308.15 322 296C322 283.85 312.15 274 300 274C287.85 274 278 283.85 278 296C278 308.15 287.85 318 300 318Z"
-                      fill="white"
-                    />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M300 600C465.685 600 600 465.685 600 300C600 134.315 465.685 0 300 0C134.315 0 0 134.315 0 300C0 465.685 134.315 600 300 600ZM300 323C312.703 323 323 312.703 323 300C323 287.297 312.703 277 300 277C287.297 277 277 287.297 277 300C277 312.703 287.297 323 300 323Z" fill="white"/>
                   </mask>
                 </defs>
 
@@ -38,6 +33,9 @@ fetch(db)
                   width="100%"
                 />
               </svg>
+              <div class="recordbar">
+              <img src="./imgs/recordbar.svg" />
+              </div>
             </div>
           
           <div class="txt">
