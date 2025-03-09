@@ -1,4 +1,23 @@
-@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@font-face {
+  font-family: "S-CoreDream-3Light";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff") format("woff");
+}
+@font-face {
+  font-family: "S-CoreDream";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "S-CoreDream";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff") format("woff");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Cafe24Ohsquare";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   margin: 0;
   padding: 0;
@@ -21,6 +40,7 @@ html {
 
 body {
   font-size: 1.6rem;
+  font-family: "S-CoreDream";
 }
 
 figure {
@@ -42,13 +62,14 @@ figure > h1 {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  z-index: 5;
 }
 figure > h1 strong {
-  font: bold 3.6rem/1.4 "arial";
+  font: bold 3.6rem/1.4 "Cafe24Ohsquare";
 }
 figure > h1 span {
   display: block;
-  font: normal 1.2rem/1 "arial";
+  font: normal 1.2rem/1 "S-CoreDream";
   letter-spacing: 1px;
   text-align: center;
 }
@@ -61,6 +82,7 @@ figure .menu {
   -webkit-background-clip: text;
   color: transparent;
   font-size: 2.4rem;
+  z-index: 5;
 }
 figure .bot-p {
   position: absolute;
@@ -69,11 +91,12 @@ figure .bot-p {
   transform: translateX(-50%);
   letter-spacing: 2px;
   opacity: 0.8;
-  font: normal 1.2rem/1 "arial";
+  font: normal 1.1rem/1 "S-CoreDream";
   background: linear-gradient(to right top, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  z-index: 5;
 }
 figure .player-section {
   width: 20vw;
@@ -160,12 +183,14 @@ figure .player-section .player .inner .txt {
   width: 100%;
 }
 figure .player-section .player .inner .txt .tit h2 {
-  font-size: 2rem;
+  font-size: 1.7rem;
+  font-weight: 700;
   margin-bottom: 1.6vh;
-  color: #333;
+  color: #222;
 }
 figure .player-section .player .inner .txt .tit p {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  font-weight: 300;
   color: #777;
 }
 figure .player-section .player .inner .txt .progressbar {
@@ -207,128 +232,69 @@ figure .player-section .player .inner .txt .btns li {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: pointer;
   padding: 2px;
-  transition: all 0.5s;
+  transition: all 0.3s;
+}
+figure .player-section .player .inner .txt .btns li i {
+  font-size: 2.5rem;
+}
+figure .player-section .player .inner .txt .btns li img {
+  width: 1.6rem;
 }
 figure .player-section .player .inner .txt .btns li.play {
-  transform: scale(1.5);
   opacity: 0.9;
 }
 figure .player-section .player .inner .txt .btns li.play:hover {
   opacity: 1;
-  transform: scale(2);
+  filter: saturate(1.5);
+}
+figure .player-section .player .inner .txt .btns li.load img {
+  width: 2rem;
 }
 figure .player-section .player .inner .txt .btns li:hover {
   opacity: 1;
-  transform: scale(1.5);
 }
 figure .btnPrev {
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  aspect-ratio: 1;
   position: absolute;
   top: 50%;
   display: flex;
   align-items: center;
   cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
   text-align: left;
   left: 50%;
-  transform: translate(-20vw, -50%);
+  transform: translate(-18vw, -50%);
 }
-figure .btnPrev:hover span {
-  opacity: 0;
-  transform: translateX(100%);
+figure .btnPrev img {
+  width: 100%;
 }
-figure .btnPrev:hover::before {
-  transform: rotate(-30deg);
-}
-figure .btnPrev:hover::after {
-  transform: rotate(30deg);
-}
-figure .btnPrev span {
-  color: #333;
-  font: normal 1.2rem/1 "arial";
+figure .btnPrev:hover {
   opacity: 1;
-  transition: all 0.5s;
-  transform: translateX(30%);
-}
-figure .btnPrev::before {
-  content: "";
-  width: 100%;
-  height: 1px;
-  background: #333;
-  position: absolute;
-  left: 0;
-  transition: all 0.5s;
-  top: 50%;
-  transform: rotate(-180deg);
-  transform-origin: left center;
-}
-figure .btnPrev::after {
-  content: "";
-  width: 100%;
-  height: 1px;
-  background: #333;
-  position: absolute;
-  left: 0;
-  transition: all 0.5s;
-  bottom: 50%;
-  transform: rotate(180deg);
-  transform-origin: left center;
 }
 figure .btnNext {
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  aspect-ratio: 1;
   position: absolute;
   top: 50%;
   display: flex;
   align-items: center;
   cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
   text-align: right;
   right: 50%;
-  transform: translate(20vw, -50%);
+  transform: translate(18vw, -50%);
 }
-figure .btnNext:hover span {
-  opacity: 0;
-  transform: translateX(-100%);
+figure .btnNext img {
+  width: 100%;
 }
-figure .btnNext:hover::before {
-  transform: rotate(30deg);
-}
-figure .btnNext:hover::after {
-  transform: rotate(-30deg);
-}
-figure .btnNext span {
-  color: #333;
-  font: normal 1.2rem/1 "arial";
+figure .btnNext:hover {
   opacity: 1;
-  transition: all 0.5s;
-  transform: translateX(-30%);
-}
-figure .btnNext::before {
-  content: "";
-  width: 100%;
-  height: 1px;
-  background: #333;
-  position: absolute;
-  left: 0;
-  transition: all 0.5s;
-  top: 50%;
-  transform: rotate(180deg);
-  transform-origin: right center;
-}
-figure .btnNext::after {
-  content: "";
-  width: 100%;
-  height: 1px;
-  background: #333;
-  position: absolute;
-  left: 0;
-  transition: all 0.5s;
-  bottom: 50%;
-  transform: rotate(-180deg);
-  transform-origin: right center;
 }
 
 @keyframes ani {
@@ -347,50 +313,74 @@ figure .btnNext::after {
     transform: translateY(10%) rotate(360deg);
   }
 }
-/*로딩 스피너*/
-.loading {
-  width: 30px;
-  height: 30px;
+.modal-area {
   position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  width: 100%;
+  height: 100vh;
+  display: none;
+}
+.modal-area.active {
+  display: block;
+}
+.modal-area .inner {
+  position: absolute;
+  width: 80%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -45%);
 }
-.loading span {
+.modal-area .inner .modal-lists {
+  display: flex;
+  flex-wrap: wrap;
+}
+.modal-area .inner .modal-lists li {
+  width: 25%;
+}
+.modal-area .inner .modal-lists li:nth-child(n+5) {
+  margin-top: 6vw;
+}
+.modal-area .inner .modal-lists li > div {
+  position: relative;
+  margin: 0 auto;
+  width: 13.5vw;
+  height: 10vw;
+  cursor: pointer;
+}
+.modal-area .inner .modal-lists li > div:hover svg {
+  left: 8vw;
+}
+.modal-area .inner .modal-lists li > div svg {
   position: absolute;
+  width: 10vw;
+  height: 10vw;
   top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  animation: loading 1.5s linear infinite;
+  left: 3.5vw;
+  transition: left 0.3s;
+  filter: drop-shadow(0px 0px 10px rgba(186, 200, 224, 0.7));
 }
-.loading span:nth-child(1) {
-  background: crimson;
+.modal-area .inner .modal-lists li > div .cover {
+  position: relative;
+  width: 10vw;
+  height: 10vw;
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(to right top, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4);
+  color: #fff;
+  filter: drop-shadow(0px 0px 10px rgba(186, 200, 224, 0.6));
+  z-index: 5;
 }
-.loading span:nth-child(2) {
-  background: dodgerblue;
-  animation-delay: 0.8s;
+.modal-area .inner .modal-lists li > div .cover h5 {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-weight: 400;
 }
-
-@keyframes loading {
-  0% {
-    top: 0;
-    left: 0;
-  }
-  25% {
-    top: 0;
-    left: calc(100% - 10px);
-  }
-  50% {
-    top: calc(100% - 10px);
-    left: calc(100% - 10px);
-  }
-  75% {
-    top: calc(100% - 10px);
-    left: 0;
-  }
-  100% {
-    top: 0;
-    left: 0;
-  }
+.modal-area .inner .modal-lists li > div .cover p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  opacity: 0.8;
 }
