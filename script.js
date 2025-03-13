@@ -253,9 +253,13 @@ fetch(db)
       });
     };
 
-    prev.addEventListener("click", () => {
-      initMusic();
+    //btn click event
+    let isClicked = false;
+    const prevBtnClick = () => {
+      if (isClicked) return;
+      isClicked = true;
 
+      initMusic();
       num++;
 
       if (num === 8) {
@@ -266,23 +270,29 @@ fetch(db)
           playerSection.style.transition = `none`;
           num = 0;
           playerSection.style.transform = `translateX(-50%) rotate(0deg)`;
-        }, 1000);
-        playerSection.style.transition = `transform 1s`;
+        }, 900);
+        playerSection.style.transition = `transform 0.9s`;
       } else {
-        playerSection.style.transition = `transform 1s`;
+        playerSection.style.transition = `transform 0.9s`;
         playerSection.style.transform = `translateX(-50%) rotate(${
           deg * num
         }deg)`;
       }
 
-      // 활성 상태 업데이트
       active === 0 ? (active = len) : active--;
       activation(active, players);
-    });
 
-    next.addEventListener("click", () => {
+      setTimeout(() => {
+        isClicked = false;
+      }, 900);
+      console.log(num);
+    };
+
+    const nextBtnClick = () => {
+      if (isClicked) return;
+      isClicked = true;
+
       initMusic();
-
       num--;
 
       if (num === -8) {
@@ -293,10 +303,10 @@ fetch(db)
           playerSection.style.transition = `none`;
           num = 0;
           playerSection.style.transform = `translateX(-50%) rotate(0deg)`;
-        }, 1000);
-        playerSection.style.transition = `transform 1s`;
+        }, 900);
+        playerSection.style.transition = `transform 0.9s`;
       } else {
-        playerSection.style.transition = `transform 1s`;
+        playerSection.style.transition = `transform 0.9s`;
         playerSection.style.transform = `translateX(-50%) rotate(${
           deg * num
         }deg)`;
@@ -304,6 +314,31 @@ fetch(db)
 
       active === len ? (active = 0) : active++;
       activation(active, players);
+
+      setTimeout(() => {
+        isClicked = false;
+      }, 900);
+      console.log(num);
+    };
+
+    prev.addEventListener("click", prevBtnClick);
+    next.addEventListener("click", nextBtnClick);
+
+    //modal click event
+    const modalAlbums = modalList.querySelectorAll("li");
+    modalAlbums.forEach((album) => {
+      album.addEventListener("click", () => {
+        num = -(album.className - 1);
+
+        playerSection.style.transform = `translateX(-50%) rotate(${
+          deg * num
+        }deg)`;
+
+        active = album.className - 1;
+        activation(active, players);
+
+        modalArea.classList.remove("active");
+      });
     });
   });
 
