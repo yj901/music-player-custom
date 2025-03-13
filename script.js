@@ -255,21 +255,52 @@ fetch(db)
 
     prev.addEventListener("click", () => {
       initMusic();
-      num++;
-      playerSection.style.transform = ` translateX(-50%)rotate(${
-        deg * num
-      }deg)`;
 
+      num++;
+
+      if (num === 8) {
+        playerSection.style.transform = `translateX(-50%) rotate(${
+          deg * num
+        }deg)`;
+        setTimeout(() => {
+          playerSection.style.transition = `none`;
+          num = 0;
+          playerSection.style.transform = `translateX(-50%) rotate(0deg)`;
+        }, 1000);
+        playerSection.style.transition = `transform 1s`;
+      } else {
+        playerSection.style.transition = `transform 1s`;
+        playerSection.style.transform = `translateX(-50%) rotate(${
+          deg * num
+        }deg)`;
+      }
+
+      // 활성 상태 업데이트
       active === 0 ? (active = len) : active--;
       activation(active, players);
     });
 
     next.addEventListener("click", () => {
       initMusic();
+
       num--;
-      playerSection.style.transform = `translateX(-50%) rotate(${
-        deg * num
-      }deg)`;
+
+      if (num === -8) {
+        playerSection.style.transform = `translateX(-50%) rotate(${
+          deg * num
+        }deg)`;
+        setTimeout(() => {
+          playerSection.style.transition = `none`;
+          num = 0;
+          playerSection.style.transform = `translateX(-50%) rotate(0deg)`;
+        }, 1000);
+        playerSection.style.transition = `transform 1s`;
+      } else {
+        playerSection.style.transition = `transform 1s`;
+        playerSection.style.transform = `translateX(-50%) rotate(${
+          deg * num
+        }deg)`;
+      }
 
       active === len ? (active = 0) : active++;
       activation(active, players);
