@@ -121,13 +121,12 @@ fetch(db)
     importData();
 
     //  player rotation
-    const deg = 45;
-    let i = 0;
-
     const players = document.querySelectorAll(".player");
     const audios = playerSection.querySelectorAll("audio");
     const prev = document.querySelector(".btnPrev");
     const next = document.querySelector(".btnNext");
+    const deg = 45;
+    let i = 0;
 
     players.forEach((player) => {
       const play = player.querySelector(".play");
@@ -145,6 +144,7 @@ fetch(db)
       let audioDuration = 0;
       let audioCurrent = audio.currentTime;
 
+      // audio progress & point
       const updateProgress = () => {
         audioDuration = audio.duration;
         audioCurrent = audio.currentTime;
@@ -168,6 +168,7 @@ fetch(db)
       audio.addEventListener("timeupdate", updateProgress);
       progressbar.addEventListener("click", audioPoint);
 
+      // audio event
       play.addEventListener("click", (e) => {
         const isActive = e.currentTarget
           .closest("article")
@@ -285,7 +286,6 @@ fetch(db)
       setTimeout(() => {
         isClicked = false;
       }, 900);
-      console.log(num);
     };
 
     const nextBtnClick = () => {
@@ -318,7 +318,6 @@ fetch(db)
       setTimeout(() => {
         isClicked = false;
       }, 900);
-      console.log(num);
     };
 
     prev.addEventListener("click", prevBtnClick);
@@ -328,6 +327,7 @@ fetch(db)
     const modalAlbums = modalList.querySelectorAll("li");
     modalAlbums.forEach((album) => {
       album.addEventListener("click", () => {
+        initMusic();
         num = -(album.className - 1);
 
         playerSection.style.transform = `translateX(-50%) rotate(${
